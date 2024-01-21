@@ -1,0 +1,92 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<link rel="stylesheet" href="{% static 'lyingbard/style.css' %}">
+	</head>
+	<body>
+		<div class="center-col"><div style="margin:60px 30px;justify-content:center;">
+			<h1 style="text-align: center;">LyingBard</h1>
+			<div class="phone-stack">
+				<div style="width:50%;float:left;padding: 20px">
+					<h2>LyingBard is a mockery of modern TTS</h2>
+					<p class="initial-capital">
+						While others seek perfect impersonations of the human voice. Only ye are
+						wise enough to find those that speak really, really badly.
+					</p><br>
+					<p style="text-align: center;">
+						<a href="{% url 'generate' %}"><button style="cursor: pointer;">Entreat</button></a>
+					</p>
+				</div>
+				<img src="{% static 'lyingbard/images/LyingBardLogo.png' %}" style="object-fit:contain;width:40%;max-width:max-content;float:left;border-radius:4px;">
+			</div>
+			<div class="phone-stack">
+				<div style="width:80%;float:left">
+					<h2>His Tale of Woe</h2>
+					<p class="initial-capital">
+						The Lying Bard, as he is so cruely named, is a vagrant of unfortunate circumstance.
+						He is an entertainer by trade, but with society as it is there is no place for him
+						in the royal courts. Thus he is cast onto the streets where he wanders and performs.
+						While many delight in his impersonations, few will provide for him.
+					</p>
+					<p>
+						&emsp;Alas he commands no attention from the thousandaires and heiresses of uptown. So,
+						for now, he is confined to a life of destitution.
+					</p>
+					<p>
+						&emsp;His quarters are unbecoming of him and have lead him to a life of
+						sluggish pace and poor countenance. He dreams of a chateau in the clouds costing not
+						more than $100 a month. From there he would be as spry as the day he was born and
+						lead a life of enrapturing entertainment for all to enjoy.
+					</p>
+					<p>
+						&emsp;For but a small pittance monthly or as seen fit, the man in your computer
+						may sing with much mirth and merriment for years to come.
+					</p>
+				</div>
+			</div>
+			<div class="phone-stack">
+				<div class="inverted" style="padding:25px;border-radius: 5px;min-height:550px;width:80%;position:relative;display: flex;flex-direction: column;">
+					<div>
+						<form action="" id="amount-form" onkeydown="return event.key != 'Enter';">
+							<p style="text-align: center;margin-top:0;margin-bottom: 0.5em;">Choose your price:</p>
+							<div style="display:flex;justify-content: center;align-items: center;margin-bottom: 1.5em;">
+								<div style="font-size:24pt;position:absolute;transform:translate(-2em,0);">$</div>
+								<input name="amount" id="amount" inputmode="numeric" value="" autocomplete="off" style="width: 4em;text-align:center;">
+							</div>
+						</form>
+						<hr>
+					</div>
+					<div style="flex: 1;">
+						<form id="payment-form">
+							<div id="link-authentication-element">
+								<!-- Elements will create authentication element here -->
+							</div>
+							<div id="payment-element">
+								<!-- Elements will create form elements here -->
+							</div>
+							<br>
+							<div style="margin:auto; width: fit-content;position: relative;">
+								<button id="submit" style="visibility: hidden;">Pay now</button>
+								<div class="ellipsis-throbber" style="position:absolute;left:0;right:0;top:0;bottom:0;margin:auto;visibility: hidden;"></div>
+							</div>
+							<div id="error-message">
+								<!-- Display error message to your customers here -->
+							</div>
+						</form>
+						<div id="messages" role="alert" style="display: none;"></div>
+					</div>
+					<div>
+						<p style="text-align: center;margin-bottom: 0;">
+							Payment is done through Stripe.<br>
+							Payment details go directly to them, not me.
+						</p>
+					</div>
+				</div>
+			</div>
+			<p style="text-align: center;">
+				If anything goes wrong please email <a href="mailto:grovedgdev@gmail.com">grovedgdev@gmail.com</a>.
+			</p>
+		</div>
+	</body>
+</html>
