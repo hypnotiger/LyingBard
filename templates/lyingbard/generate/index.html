@@ -1,0 +1,28 @@
+{% extends "centered_box.html" %}
+{% load static %}
+{% load heads %}
+
+{% block head %}{% simple_head "LyingBard" "A TTS based off of LyreBird." "lyingbard/style.css" %}{% endblock %}
+
+{% block header %}
+    <p>
+        {% if request.user.is_authenticated %}
+        <a href="{% url 'lyingbard:dashboard' %}">Dashboard</a>
+        {% else %}
+        <a href="{% url 'account:login' %}">Log In</a>
+        {% endif %}
+    </p>
+{% endblock %}
+
+{% block content %}
+    <iframe style="width:800px;height:500px" src="{% url 'lyingbard:generate_widget' %}" frameBorder="0">
+    </iframe>
+{% endblock %}
+
+{% block footer %}
+    <div class="center-at-bottom">
+        <p>
+            <a href="{% url 'lyingbard:index' %}">Back to main page</a>
+        </p>
+    </div>
+{% endblock %}

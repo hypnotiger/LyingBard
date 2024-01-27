@@ -1,0 +1,3 @@
+[submodule "tts/emojisound"]
+	path = tts/emojisound
+	url = ./tts/emojisound

@@ -6,7 +6,14 @@
 	--warmblack: rgb(2,1,0);
 	--base-size: 16pt;
 }
-
+html {
+	scrollbar-color: goldenrod var(--warmblack);
+}
+html,
+body {
+   margin: 0;
+   padding: 0;
+}
 body {
 	color: goldenrod;
 	text-shadow: 0 0 3px goldenrod;
@@ -17,20 +24,28 @@ body {
 	background-color: rgb(2, 1, 0);
 	font-size: var(--base-size);
 }
-
 input {
 	font-size: var(--base-size);
 	padding: 6px;
 }
-
 textarea {
 	border-color: goldenrod;
 	background-color: var(--warmblack);
 	color: goldenrod;
 	font-size: var(--base-size);
 }
-
 button {
+	color: var(--warmblack);
+	background-color: goldenrod;
+	border-color: goldenrod;
+	font-size: var(--base-size);
+	padding-top: 5pt;
+	padding-bottom: 5pt;
+	padding-left: 20pt;
+	padding-right: 20pt;
+	cursor: pointer;
+}
+input[type=submit] {
 	color: var(--warmblack);
 	background-color: goldenrod;
 	border-color: goldenrod;
@@ -44,49 +59,71 @@ button {
 button:disabled {
 	cursor: default;
 }
-
 a {
 	color: gold;
 	text-decoration: underline;
 }
-
 ::selection {
 	background: goldenrod;
 	color: var(--warmblack);
 }
-
 *:focus {
 	outline-color: goldenrod;
 	outline-style: double;
 	outline-width: 2pt;
 }
-
-.center-in-page {
-	margin: 0;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	-ms-transform: translate(-50%, -50%);
-	transform: translate(-50%, -50%);
-}
-
-.center-at-bottom {
-	position: absolute;
-	left: 50%;
-	bottom: 0;
-	transform: translate(-50%, 0);
-	margin: 0 auto;
-}
-
-.center-col {
-	max-width: 960px;
-	width: 100%;
-	margin: auto;
-}
-
 h1 {
 	padding-bottom:30px;
 	font-size:40pt
+}
+hr {
+	border-color: goldenrod;
+}
+dialog {
+	background-color: var(--warmblack);
+	color: goldenrod;
+}
+select {
+	background-color: var(--warmblack);
+	color: goldenrod;
+	border-color: goldenrod;
+}
+option {
+	background-color: var(--warmblack);
+	color: goldenrod;
+	border-color: goldenrod;
+}
+option::selection {
+	background-color: goldenrod;
+	color: var(--warmblack);
+	border-color: var(--warmblack);
+}
+
+.inverted {
+	background-color: goldenrod;
+	text-shadow: None;
+	color: var(--warmblack)
+}
+.inverted ::selection {
+	background: var(--warmblack);
+	color: goldenrod;
+}
+.inverted button {
+	color: goldenrod;
+	background-color: var(--warmblack);
+	border-color: goldenrod;
+	border-width: 6px;
+	font-size: var(--base-size);
+	padding-top: 5pt;
+	padding-bottom: 5pt;
+	padding-left: 20pt;
+	padding-right: 20pt;
+}
+.inverted hr {
+	border-color: var(--warmblack);
+}
+.inverted a {
+	background-color: var(--warmblack);
 }
 
 .initial-capital::first-letter{
@@ -119,28 +156,27 @@ h1 {
 	}
 }
 
-hr {
-	border-color: goldenrod;
+.center-in-page {
+	margin: 0;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	-ms-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
 }
 
-.inverted {
-	background-color: goldenrod;
-	text-shadow: None;
-	color: var(--warmblack)
+.center-at-bottom {
+	position: absolute;
+	left: 50%;
+	bottom: 0;
+	transform: translate(-50%, 0);
+	margin: 0 auto;
 }
-.inverted button {
-	color: goldenrod;
-	background-color: var(--warmblack);
-	border-color: goldenrod;
-	border-width: 6px;
-	font-size: var(--base-size);
-	padding-top: 5pt;
-	padding-bottom: 5pt;
-	padding-left: 20pt;
-	padding-right: 20pt;
-}
-.inverted hr {
-	border-color: var(--warmblack);
+
+.center-col {
+	max-width: 960px;
+	width: 100%;
+	margin: auto;
 }
 
 .ellipsis-throbber {

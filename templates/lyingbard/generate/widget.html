@@ -1,0 +1,34 @@
+{% load heads %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        {% block head %}{% simple_head "LyingBard" "A TTS based off of LyreBird." "lyingbard/style.css" %}{% endblock %}
+    </head>
+    <body style="text-align: center; margin:0; width:100vw; height:100vh;">
+        <form action="" id="tts-form" style="width:100%; height:100%; display:flex; flex-direction:column; align-items:center;">
+            <audio controls id="audio-player" autoplay style="margin: 10px; max-width:100%;" preload="none">
+                <source type="audio/flac;codec=pcm">
+                Your browser does not support the audio element.
+            </audio>
+            {% csrf_token %}
+            <textarea name="text" autocomplete="off" autocorrect="off" style="width:90%;flex:1;resize:none;">This is LyingBard. An 🆗 T T S based off of LyreBird. It's not quite there yet, but it's close :clap:.</textarea>
+            <div style="display: flex;align-items: center;width:fit-content;margin:10px;">
+                <div style="display: inline-block;">
+                    <p style="margin: 0; font-size: small;">Speaker</p>
+                    <select name="speaker" style="margin:0; padding:0;">
+                        {% for speaker in speakers %}
+                        <option value="{{ speaker.url_id }}" {% if speaker.name == "Grove" %}selected{% endif %}>{{ speaker.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div style="width:20px"></div>
+                <div style="margin:auto; width: fit-content;position: relative;display: inline;">
+                    <button id="speak-button">Speak</button>
+                    <div id="generating-throbber" class="ellipsis-throbber" style="position:absolute;left:0;right:0;top:0;bottom:0;margin:auto;visibility: hidden;"></div>
+                </div>
+            </div>
+        </form>
+        <script src="{% static 'lyingbard/scripts/generate.js' %}"></script>
+    </body>
+</html>

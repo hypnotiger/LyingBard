@@ -13,8 +13,13 @@ function loadingFinish() {
     speakButton.style.visibility = "visible";
 }
 
+const loadingStarted = new Event("loadingStarted")
+const loadingFinished = new Event("loadingFinished")
+ttsForm.addEventListener("loadingStarted", loadingStart)
+ttsForm.addEventListener("loadingFinished", loadingFinish)
+
 async function sendTTSRequest() {
-    loadingStart();
+    ttsForm.dispatchEvent(loadingStarted);
     const formData = new FormData(ttsForm);
 
     options = {method: "POST", body: formData}
@@ -27,8 +32,11 @@ async function sendTTSRequest() {
         (data) => {
             audioPlayer.src = data.audioURL
         }
-    ).catch(console.error);
-    loadingFinish();
+    ).catch(
+        console.error
+    ).finally(
+        _ => ttsForm.dispatchEvent(loadingFinished)
+    );
 }
 
 ttsForm.addEventListener("submit", (event) => {

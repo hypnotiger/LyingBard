@@ -1,8 +1,9 @@
 {% load static %}
+{% load heads %}
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<link rel="stylesheet" href="{% static 'lyingbard/style.css' %}">
+		{% simple_head "LyingBard" "A TTS based off of LyreBird." "lyingbard/style.css" %}
 	</head>
 	<body>
 		<div class="center-col"><div style="margin:60px 30px;justify-content:center;">
@@ -15,7 +16,7 @@
 						wise enough to find those that speak really, really badly.
 					</p><br>
 					<p style="text-align: center;">
-						<a href="{% url 'generate' %}"><button style="cursor: pointer;">Entreat</button></a>
+						<a href="{% url 'lyingbard:generate' %}"><button style="cursor: pointer;">Entreat</button></a>
 					</p>
 				</div>
 				<img src="{% static 'lyingbard/images/LyingBardLogo.png' %}" style="object-fit:contain;width:40%;max-width:max-content;float:left;border-radius:4px;">
@@ -45,47 +46,12 @@
 					</p>
 				</div>
 			</div>
-			<div class="phone-stack">
-				<div class="inverted" style="padding:25px;border-radius: 5px;min-height:550px;width:80%;position:relative;display: flex;flex-direction: column;">
-					<div>
-						<form action="" id="amount-form" onkeydown="return event.key != 'Enter';">
-							<p style="text-align: center;margin-top:0;margin-bottom: 0.5em;">Choose your price:</p>
-							<div style="display:flex;justify-content: center;align-items: center;margin-bottom: 1.5em;">
-								<div style="font-size:24pt;position:absolute;transform:translate(-2em,0);">$</div>
-								<input name="amount" id="amount" inputmode="numeric" value="" autocomplete="off" style="width: 4em;text-align:center;">
-							</div>
-						</form>
-						<hr>
-					</div>
-					<div style="flex: 1;">
-						<form id="payment-form">
-							<div id="link-authentication-element">
-								<!-- Elements will create authentication element here -->
-							</div>
-							<div id="payment-element">
-								<!-- Elements will create form elements here -->
-							</div>
-							<br>
-							<div style="margin:auto; width: fit-content;position: relative;">
-								<button id="submit" style="visibility: hidden;">Pay now</button>
-								<div class="ellipsis-throbber" style="position:absolute;left:0;right:0;top:0;bottom:0;margin:auto;visibility: hidden;"></div>
-							</div>
-							<div id="error-message">
-								<!-- Display error message to your customers here -->
-							</div>
-						</form>
-						<div id="messages" role="alert" style="display: none;"></div>
-					</div>
-					<div>
-						<p style="text-align: center;margin-bottom: 0;">
-							Payment is done through Stripe.<br>
-							Payment details go directly to them, not me.
-						</p>
-					</div>
-				</div>
-			</div>
 			<p style="text-align: center;">
-				If anything goes wrong please email <a href="mailto:grovedgdev@gmail.com">grovedgdev@gmail.com</a>.
+				<a href="{% url 'donate:donate' %}">Donate Here</a>
+				<br>
+				<br>
+				<br>
+				<br>
 			</p>
 		</div>
 	</body>
