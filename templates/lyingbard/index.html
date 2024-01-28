@@ -6,6 +6,9 @@
 		{% simple_head "LyingBard" "A TTS based off of LyreBird." "lyingbard/style.css" %}
 	</head>
 	<body>
+		<p style="text-align:center;">
+			<a href="{% url 'index' %}">Back to Home Page</a>
+		</p>
 		<div class="center-col"><div style="margin:60px 30px;justify-content:center;">
 			<h1 style="text-align: center;">LyingBard</h1>
 			<div class="phone-stack">
@@ -47,7 +50,7 @@
 				</div>
 			</div>
 			<p style="text-align: center;">
-				<a href="{% url 'donate:donate' %}">Donate Here</a>
+				<a href="{% url 'donate:index' %}">Donate Here</a>
 				<br>
 				<br>
 				<br>
