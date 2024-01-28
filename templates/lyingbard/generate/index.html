@@ -17,6 +17,6 @@
 
 {% block footer %}
     <p>
-        <a href="{% url 'lyingbard:dashboard' %}"><button>Dashboard</button></a>
+        <a href="{% url 'lyingbard:dashboard' %}"><button>{% if user.is_authenticated %}Dashboard{% else %}Log In{% endif %}</button></a>
     </p>
 {% endblock %}
