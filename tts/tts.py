@@ -20,9 +20,9 @@ torch.set_num_threads(1)
 from . import fake_librosa
 vocoder = torch.hub.load('descriptinc/melgan-neurips', 'load_melgan')
 
-model_path = Path(__file__).parent / "model.pt"
+model_path = Path(__file__).parent / "talkotron_model.pt"
 model = Talkotron()
-model.load_state_dict(torch.load(model_path, map_location="cpu")["tacotron"])
+model.load_state_dict(torch.load(model_path, map_location="cpu"))
 
 import g2p_en
 phonemizer = g2p_en.G2p()
