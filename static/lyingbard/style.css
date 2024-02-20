@@ -98,6 +98,9 @@ option::selection {
 	color: var(--warmblack);
 	border-color: var(--warmblack);
 }
+fieldset {
+	border-color: goldenrod;
+}
 
 .inverted {
 	background-color: goldenrod;

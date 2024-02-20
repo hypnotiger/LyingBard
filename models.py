@@ -18,10 +18,10 @@ remember the three-step guide to making model changes:
 class IDMixin():
     id_length = 4 # number of base64 digits
 
-    def save(self):
+    def save(self, *args, **kwargs):
         if not self.id:
             self.id = self.unique_random_id()
-        super().save()
+        super().save(*args, **kwargs)
 
     @classmethod
     def unique_random_id(model) -> int:
@@ -63,6 +63,17 @@ class Speaker(IDMixin, models.Model):
             speaker_embedding = json.load(f)
         return speaker_embedding
 
+class TTSModel(IDMixin, models.Model):
+    id = models.PositiveIntegerField(primary_key=True, editable=False)
+    name = models.CharField(max_length=255)
+    file = models.FileField(upload_to="lyingbard_models")
+    speaker = models.ForeignKey(Speaker, on_delete=models.CASCADE, blank=True)
+    owner = models.ForeignKey(get_user_model(), default=None, on_delete=models.CASCADE, null=True)
+
+    def __str__(self):
+        username = self.owner.get_username() if self.owner != None else "Anonymous"
+        return escape(f'{username}\'s {self.name}')
+
 class Generation(IDMixin, models.Model):
     id = models.PositiveIntegerField(primary_key=True, editable=False)
     file = models.FileField(upload_to="lyingbard_generations")
@@ -75,6 +86,7 @@ class Generation(IDMixin, models.Model):
         username = self.owner.get_username() if self.owner != None else "Anonymous"
         return escape(f'{username} made {self.speaker.name} say "{self.text[:47]}{"..." if len(self.text) > 50 else ""}"')
 
+@receiver(models.signals.post_delete, sender=TTSModel)
 @receiver(models.signals.post_delete, sender=Generation)
 @receiver(models.signals.post_delete, sender=Speaker)
 def delete_file(sender, instance, *args, **kwargs):
