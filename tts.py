@@ -1,15 +1,4 @@
 TTS_ADDRESS = "http://127.0.0.1:5000"
-from .models import TTSModel, Speaker, Generation
-from django.core.files.base import File
-import requests
-
-def text_to_speech(text:str, model:TTSModel, speaker:Speaker, audio_id:str):
-    response = requests.post(TTS_ADDRESS+"/generate", {
-        "text": text,
-        "model_id": model.url_id,
-        "speaker_id": speaker.url_id,
-        "audio_id": audio_id
-    })
 
 def text_to_speech_and_save(text:str, model:TTSModel, speaker:Speaker, user):
     generation = Generation(text=text, speaker=speaker, owner=user)

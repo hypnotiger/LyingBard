@@ -2,11 +2,8 @@ import discord
 import os
 import asyncio
 import threading
-from lyingbard.cloud_tts import text_to_speech_and_save
+from lyingbard.tts import text_to_speech_and_save
 from lyingbard.models import Speaker, Generation
-from django.core.files.base import File
-from io import BytesIO
-from asgiref.sync import sync_to_async
 import atexit
 
 bot = discord.Bot()
@@ -26,7 +23,7 @@ async def speak(ctx: discord.commands.context.ApplicationContext, text: str, spe
     await ctx.defer()
     speaker = await Speaker.objects.aget(name=speaker_name)
 
-    generation = await sync_to_async(text_to_speech_and_save)(text=text, model=None, speaker=speaker, user=None)
+    generation = text_to_speech_and_save(text=text, model=None, speaker=speaker, user=None)
 
     await ctx.send_followup(file=discord.File(generation.file.path))
     

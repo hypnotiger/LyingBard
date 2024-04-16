@@ -1,3 +1,0 @@
-[submodule "tts/emojisound"]
-	path = tts/emojisound
-	url = http://github.com/grovedg/emojisound.git
