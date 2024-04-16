@@ -1,0 +1,24 @@
+{% extends 'lyingbard/app_page.html' %}
+{% load heads %}
+
+{% block head %}
+{{ block.super }}
+{% simple_head "LyingBard Speakers" "Your LyingBard speakers." "lyingbard/style.css" %}
+<style>
+    table, th, td {
+        border-collapse: collapse;
+        border-style:solid
+    }
+    td {
+        padding:24px;
+    }
+</style>
+{% endblock %}
+
+{% block sidebar %}
+<a href="{% url 'lyingbard:speaker_create' %}"><button>Create Speaker</button></a>
+{% endblock %}
+
+{% block content %}
+<iframe src="{% url 'lyingbard:speakers_widget' %}" style="width:100%;height:100%;"></iframe>
+{% endblock %}

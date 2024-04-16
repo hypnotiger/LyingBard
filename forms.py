@@ -2,7 +2,7 @@ from typing import Any
 from django import forms
 from django.forms.boundfield import BoundField
 from django.forms.forms import BaseForm
-from .models import TTSModel, Generation
+from .models import TTSModel, Generation, Speaker
 from .misc_utils import base64_to_int
 from django.core.exceptions import ValidationError
 from django.core.files import File
@@ -29,6 +29,9 @@ class GenerateForm(forms.Form):
 
 class GenerationDeleteForm(forms.Form):
     id = B64IDField(Generation.id_length)
+
+class SpeakerDeleteForm(forms.Form):
+    id = B64IDField(Speaker.id_length)
 
 class ContentTypeRestrictedFileField(forms.FileField):
     """

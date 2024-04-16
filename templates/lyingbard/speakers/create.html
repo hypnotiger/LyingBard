@@ -1,56 +1,15 @@
-{% extends 'centered_box.html' %}
+{% extends 'lyingbard/app_page.html' %}
 {% load heads %}
 
-{% block head %}{% simple_head "Create LyingBard Speaker" "Create a custom speaker for LyingBard." "lyingbard/style.css" %}{% endblock %}
+{% block head %}
+{{ block.super }}
+{% simple_head "Create LyingBard Speaker" "Create a custom speaker for LyingBard." "lyingbard/style.css" %}
+{% endblock %}
+
+{% block sidebar %}
+<a href="{% url 'lyingbard:speaker_create' %}"><button>Create Speaker</button></a>
+{% endblock %}
 
 {% block content %}
-<div style="width:800px; max-width:90vw;">
-    {% if form.errors %}
-    <div class="alert alert-danger">
-        {{ form.errors }}
-    </div>
-    {% endif %}
-    <form style="text-align: center;" method="POST" enctype="multipart/form-data" id="speaker-form">
-        {% csrf_token %}
-        <label for="name">Speaker Name:</label>
-        <input type="text" name="name" required><br>
-        <label for="audio">Speaker Audio (5-15 sec. each | wav, flac, ogg, or mp3):</label>
-        <input type="file" name="audio" id="audioField" multiple autocomplete="off" value="" required><br>
-        <fieldset id="transcripts">
-            <template id="transcriptTemplate">
-                <fieldset style="display: flex;">
-                    <div style="width:fit-content;">
-                        <label for="transcript"></label><br>
-                        <audio controls style="width:100%;"></audio>
-                    </div>
-                    <div style="flex:1; min-width:60%;">
-                        <textarea name="transcript" style="width:100%" placeholder="Transcribe here."></textarea>
-                    </div>
-                </fieldset>
-            </template>
-        </fieldset>
-        <input type="submit" value="Submit">
-    </form>
-</div>
-<script>
-    var speakerForm = document.getElementById("speaker-form");
-    var audioField = document.getElementById("audioField");
-    var transcriptList = document.getElementById("transcripts");
-    var transcriptTemplate = transcriptList.getElementsByTagName("template")[0];
-    audioField.addEventListener("change", _ => {
-        for (i = transcriptList.children.length-1; i >= 0; i--) {
-            child = transcriptList.children[i]
-            if (child.tagName == "FIELDSET"){
-                child.remove()
-            }
-        }
-        for (i = 0; i < audioField.files.length; i++) {
-            file = audioField.files[i];
-            transcriptField = transcriptTemplate.content.cloneNode(true);
-            transcriptField.querySelector("label").innerText = file.name;
-            transcriptField.querySelector("audio").src = URL.createObjectURL(file);
-            transcriptList.appendChild(transcriptField);
-        }
-    });
-</script>
+<iframe src="{% url 'lyingbard:speaker_create_widget' %}" style="width:100%;height:100%;"></iframe>
 {% endblock %}

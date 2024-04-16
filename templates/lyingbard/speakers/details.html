@@ -1,0 +1,21 @@
+{% extends 'centered_box.html' %}
+{% load heads %}
+
+{% block head %}{% simple_head "LyingBard Speaker" "A LyingBard speaker." "lyingbard/style.css" %}{% endblock %}
+
+{% block content %}
+<small>
+    {% if speaker.owner == request.user %}
+        Your
+    {% else %}
+        {{speaker.owner.get_username}}'s
+    {% endif %}
+</small>
+<h2>{{speaker.name}}</h2>
+<p>Generations: {{ speaker.generation_set|length }}</p>
+<form method="POST" action="{% url 'lyingbard:speaker_delete'  %}">
+    {% csrf_token %}
+    <input name="id" type="hidden" value="{{ speaker.url_id }}">
+    <input type="submit" value="Delete"></input>
+</form>
+{% endblock %}

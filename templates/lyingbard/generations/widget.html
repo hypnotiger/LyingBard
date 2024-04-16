@@ -65,7 +65,7 @@
         function deleteGeneration() {
             formData = new FormData(this);
             fetch(
-                "{% url 'lyingbard:generations_delete'  %}", {method:'POST',body:formData}
+                "{% url 'lyingbard:generation_delete'  %}", {method:'POST',body:formData}
             ).then(
                 _ => {window.location.reload()}
             );

@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load account %}
+
+{% block head %}
+<style>
+    body {
+        display:flex;
+        flex-direction:column;
+        width:100vw;
+        height:100vh;
+        align-items:center;
+        box-sizing:border-box;
+        overflow: hidden;
+    }
+    .panels {
+        display: flex;
+        flex: 1;
+        flex-direction: row;
+    }
+    @media only screen and (max-width: 800px) {
+        .panels {
+            flex-direction: column;
+        }
+    }
+    #sidebar {
+        display:flex;
+        flex-direction:column;
+        border-style:solid;
+        height:100%;
+        box-sizing: border-box;
+    }
+    #sidebar button {
+        width: 100%;
+    }
+    #sidebar a {
+        display: block;
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+{% account_header subpage_name subpage_url %}
+<div style="display:flex;flex-direction:row;width:100%;flex:1;flex-wrap: wrap;">
+    <div style="height:100%;min-width: none;position:relative;flex:1;">
+        <div id="sidebar">
+            <div style="flex:1">
+                {% block sidebar %}
+                {% endblock %}
+            </div>
+            <div>
+                <a href="{% url 'lyingbard:dashboard' %}"><button>Dashboard</button></a>
+                <a href="{% url 'lyingbard:speakers' %}"><button>Speakers</button></a>
+            </div>
+        </div>
+        <button style="left:100%;bottom:0%; position:absolute;padding:0.25em 0.5em" onclick="collapseSidebar()" id="collapseButton">
+            ⮜</button>
+    </div>
+    <div style="flex:9;">
+        {% block content %}
+        {% endblock %}
+    </div>
+</div>
+<script>
+    function collapseSidebar() {
+        sidebar = document.getElementById("sidebar");
+        collapseButton = document.getElementById("collapseButton");
+        if (sidebar.style.display !== "none") {
+            sidebar.style.display = "none";
+            sidebar.parentNode.style.flex = 0;
+            collapseButton.textContent = "⮞";
+        }
+        else {
+            sidebar.style.display = "flex";
+            sidebar.parentNode.style.flex = 1;
+            collapseButton.textContent = "⮜";
+        }
+    }
+</script>
+{% endblock %}

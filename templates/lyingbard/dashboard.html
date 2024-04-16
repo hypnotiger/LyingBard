@@ -1,25 +1,22 @@
-{% load account %}
+{% extends "lyingbard/app_page.html" %}
 {% load heads %}
 {% load static %}
-<!DOCTYPE html>
-<html>
-    <head>
-        {% block head %}{% simple_head "LyingBard Dashboard" "" "lyingbard/style.css" %}{% endblock %}
-    </head>
-    <body style="overflow: hidden;">
-        <div style="display:flex; flex-direction:column; width:100vw; height:100vh; align-items:center; box-sizing:border-box;">
-            {% account_header "LyingBard" "lyingbard:index" %}
-            <div style="display:flex; flex:1; flex-direction:row; width:100%;">
-                <div style="flex:1; display:flex; flex-direction:column;">
-                    <iframe style="width:100%;height:100%;box-sizing:border-box;" src="{% url 'lyingbard:generate_widget' %}" id="tts-widget">
-                    </iframe>
-                </div>
-                <div style="flex:1">
-                    <iframe style="width:100%;height:100%;box-sizing:border-box;" src="{% url 'lyingbard:generations_widget' %}" id="generations-widget">
-                    </iframe>
-                </div>
-            </div>
-        </div>
-        <script src="{% static 'lyingbard/scripts/dashboard.js' %}"></script>
-    </body>
-</html>
+
+{% block head %}
+{{ block.super }}
+{% simple_head "LyingBard Dashboard" "" "lyingbard/style.css" %}
+{% endblock %}
+
+{% block content %}
+<div class="panels" style="width:100%;height:100%;display:flex">
+    <div style="flex:1; display:flex; flex-direction:column;">
+        <iframe style="width:100%;height:100%;box-sizing:border-box;" src="{% url 'lyingbard:generate_widget' %}" id="tts-widget">
+        </iframe>
+    </div>
+    <div style="flex:1">
+        <iframe style="width:100%;height:100%;box-sizing:border-box;" src="{% url 'lyingbard:generations_widget' %}" id="generations-widget">
+        </iframe>
+    </div>
+</div>
+<script src="{% static 'lyingbard/scripts/dashboard.js' %}"></script>
+{% endblock %}

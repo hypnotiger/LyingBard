@@ -1,68 +1,74 @@
+{% extends "center_column.html" %}
 {% load static %}
 {% load heads %}
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		{% simple_head "LyingBard" "A TTS based off of LyreBird." "lyingbard/style.css" %}
-	</head>
-	<body>
-		<p style="text-align:center;">
-			<a href="{% url 'index' %}">Back to Home Page</a>
-		</p>
-		<div class="center-col"><div style="margin:60px 30px;justify-content:center;">
-			<h1 style="text-align: center;">LyingBard</h1>
-			<ul style="text-align: center; list-style-type: none; padding-left: 0;">
-				<li>==========NEW==========</li>
-				<li>---&gt; <a href="{% url 'lyingbard:dashboard' %}">Dashboard</a> &lt;---</li>
-				<li>---&gt; <a href="{% url 'lyingbard:discord_bot' %}">Discord Bot</a> &lt;---</li>
-				<li>---&gt; <a href="">Custom Speakers</a> &lt;---</li>
-				<li>=======================</li>
-			</ul>
-			<div class="phone-stack">
-				<div style="width:50%;float:left;padding: 20px">
-					<h2>LyingBard is a mockery of modern TTS</h2>
-					<p class="initial-capital">
-						While others seek perfect impersonations of the human voice. Only ye are
-						wise enough to find those that speak really, really badly.
-					</p><br>
-					<p style="text-align: center;">
-						<a href="{% url 'lyingbard:generate' %}"><button style="cursor: pointer;">Entreat</button></a>
-					</p>
-				</div>
-				<img src="{% static 'lyingbard/images/LyingBardLogo.png' %}" style="object-fit:contain;width:40%;max-width:max-content;float:left;border-radius:4px;">
-			</div>
-			<div class="phone-stack">
-				<div style="width:80%;float:left">
-					<h2>His Tale of Woe</h2>
-					<p class="initial-capital">
-						The Lying Bard, as he is so cruely named, is a vagrant of unfortunate circumstance.
-						He is an entertainer by trade, but with society as it is there is no place for him
-						in the royal courts. Thus he is cast onto the streets where he wanders and performs.
-						While many delight in his impersonations, few will provide for him.
-					</p>
-					<p>
-						&emsp;Alas he commands no attention from the thousandaires and heiresses of uptown. So,
-						for now, he is confined to a life of destitution.
-					</p>
-					<p>
-						&emsp;His quarters are unbecoming of him and have lead him to a life of
-						sluggish pace and poor countenance. He dreams of a chateau in the clouds costing not
-						more than $100 a month. From there he would be as spry as the day he was born and
-						lead a life of enrapturing entertainment for all to enjoy.
-					</p>
-					<p>
-						&emsp;For but a small pittance monthly or as seen fit, the man in your computer
-						may sing with much mirth and merriment for years to come.
-					</p>
-				</div>
-			</div>
+
+{% block head %}
+	{% simple_head "LyingBard" "A TTS based off of LyreBird." "lyingbard/style.css" %}
+{% endblock %}
+
+{% block content %}
+<div><div style="margin:60px 30px;justify-content:center;">
+	<h1 style="text-align: center;">LyingBard</h1>
+	<div class="phone-stack">
+		<div style="width:50%;float:left;padding: 20px">
+			<h2>LyingBard is a mockery of modern TTS</h2>
+			<p class="initial-capital">
+				While others seek perfect impersonations of the human voice. Only ye are
+				wise enough to find those that speak really, really badly.
+			</p>
 			<p style="text-align: center;">
-				<a href="{% url 'donate:index' %}">Donate Here</a>
-				<br>
-				<br>
-				<br>
-				<br>
+				<a href="{% url 'lyingbard:generate' %}"><button style="font-size:1.5em">Entreat</button></a>
 			</p>
 		</div>
-	</body>
-</html>
+		<div style="float:left;width:40%;align-items:center;display:flex;justify-content:center;">
+			<img src="{% static 'lyingbard/images/LyingBardLogo.png' %}" style="object-fit:contain;max-width:100%;border-radius:3.5%;">
+		</div>
+	</div>
+	<div>
+		<h2 style="text-align: center;">Features</h2>
+		<div class="phone-stack" style="text-align: center;">
+			<div class="border" style="width:50%; border: medium solid; padding-bottom:36px">
+				<h2>Free</h2>
+				<a href="{% url 'lyingbard:dashboard' %}">Dashboard</a><br>
+				<a href="{% url 'lyingbard:discord_bot' %}">Discord Bot</a>
+			</div>
+			<div class="border" style="width:50%; border: medium solid; padding-bottom:36px">
+				<a href="{% url 'donate:subscription' %}"><h2>Paid</h2></a>
+				<a href="{% url 'lyingbard:speaker_create' %}">Custom Speakers</a><br>
+			</div>
+		</div>
+	</div>
+	<div class="phone-stack">
+		<div style="width:80%;float:left">
+			<h2>His Tale of Woe</h2>
+			<p class="initial-capital">
+				The Lying Bard, as he is so cruely named, is a vagrant of unfortunate circumstance.
+				He is an entertainer by trade, but with society as it is there is no place for him
+				in the royal courts. Thus he is cast onto the streets where he wanders and performs.
+				While many delight in his impersonations, few will provide for him.
+			</p>
+			<p>
+				&emsp;Alas he commands no attention from the thousandaires and heiresses of uptown. So,
+				for now, he is confined to a life of destitution.
+			</p>
+			<p>
+				&emsp;His quarters are unbecoming of him and have lead him to a life of
+				sluggish pace and poor countenance. He dreams of a chateau in the clouds costing not
+				more than $100 a month. From there he would be as spry as the day he was born and
+				lead a life of enrapturing entertainment for all to enjoy.
+			</p>
+			<p>
+				&emsp;For but a small pittance monthly or as seen fit, the man in your computer
+				may sing with much mirth and merriment for years to come.
+			</p>
+		</div>
+	</div>
+	<p style="text-align: center;">
+		<a href="{% url 'donate:index' %}?theme=lyingbard"><button>Donate Here</button></a>
+		<br>
+		<br>
+		<br>
+		<br>
+	</p>
+</div></div>
+{% endblock %}

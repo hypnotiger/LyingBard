@@ -5,10 +5,6 @@
 {% simple_head "LyingBard Discord Bot" "The LyingBard Discord bot's about page." "lyingbard/style.css" %}
 {% endblock %}
 
-{% block header %}
-<a href="{% url 'lyingbard:generate' %}">Back to LyingBard Generate</a>
-{% endblock %}
-
 {% block content %}
 <a href="{% url 'lyingbard:discord_bot_invite' %}" target="_blank">Add the Bot</a>
 {% endblock %}

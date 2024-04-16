@@ -1,18 +1,5 @@
 # This file should only be used for trivial functions which would've been nice to have in a module
 
-# From itertools recipes
-# Generalized pairwise
-import collections
-from itertools import islice
-def sliding_window(iterable, n):
-    "Collect data into overlapping fixed-length chunks or blocks."
-    # sliding_window('ABCDEFG', 4) --> ABCD BCDE CDEF DEFG
-    it = iter(iterable)
-    window = collections.deque(islice(it, n-1), maxlen=n)
-    for x in it:
-        window.append(x)
-        yield tuple(window)
-
 # From https://stackoverflow.com/a/63839503
 # Simplify bytes count units
 class _Bytes():

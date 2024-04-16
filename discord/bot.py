@@ -2,7 +2,7 @@ import discord
 import os
 import asyncio
 import threading
-from lyingbard.tts import tts
+from lyingbard.cloud_tts import text_to_speech_and_save
 from lyingbard.models import Speaker, Generation
 from django.core.files.base import File
 from io import BytesIO
@@ -25,11 +25,9 @@ async def speak(ctx: discord.commands.context.ApplicationContext, text: str, spe
 
     await ctx.defer()
     speaker = await Speaker.objects.aget(name=speaker_name)
-    audio = tts.text_to_speech(text=text, speaker=speaker)
-    audio_file = File(audio.export(BytesIO(), 'flac'))
-    generation = Generation(text=text, speaker=speaker, owner=None)
-    await generation.asave()
-    await sync_to_async(generation.file.save)(f"{generation.url_id}.flac", audio_file)
+
+    generation = await sync_to_async(text_to_speech_and_save)(text=text, model=None, speaker=speaker, user=None)
+
     await ctx.send_followup(file=discord.File(generation.file.path))
     
     if vc.is_playing():
@@ -38,7 +36,10 @@ async def speak(ctx: discord.commands.context.ApplicationContext, text: str, spe
 
 def bot_thread_fn(loop: asyncio.AbstractEventLoop):
     asyncio.set_event_loop(loop)
-    loop.run_until_complete(bot.start(os.getenv('LYINGBARD_DISCORD_TOKEN')))
+    try:
+        loop.run_until_complete(bot.start(os.getenv('LYINGBARD_DISCORD_TOKEN')))
+    except:
+        print("Discord not available.")
 
 event_loop = asyncio.get_event_loop()
 bot_thread = threading.Thread(target=bot_thread_fn,args=(event_loop,), daemon=True)

@@ -1,137 +1,21 @@
 @charset "UTF-8";
-@import url("https://fontlibrary.org//face/pt-mono");
-@import url("https://fontlibrary.org//face/kjv-1611");
+@import url("../style/terminal.css");
+@import url("../style/layout.css");
 
 :root {
-	--warmblack: rgb(2,1,0);
+	--text: goldenrod;
+	--bg: rgb(31, 18, 10);
+	--special: gold;
 	--base-size: 16pt;
-}
-html {
-	scrollbar-color: goldenrod var(--warmblack);
-}
-html,
-body {
-   margin: 0;
-   padding: 0;
-}
-body {
-	color: goldenrod;
-	text-shadow: 0 0 3px goldenrod;
-	background-size: contain;
-	image-rendering: pixelated;
-	font-family: 'PTMonoRegular';
-	box-sizing: border-box;
-	background-color: rgb(2, 1, 0);
-	font-size: var(--base-size);
-}
-input {
-	font-size: var(--base-size);
-	padding: 6px;
-}
-textarea {
-	border-color: goldenrod;
-	background-color: var(--warmblack);
-	color: goldenrod;
-	font-size: var(--base-size);
-}
-button {
-	color: var(--warmblack);
-	background-color: goldenrod;
-	border-color: goldenrod;
-	font-size: var(--base-size);
-	padding-top: 5pt;
-	padding-bottom: 5pt;
-	padding-left: 20pt;
-	padding-right: 20pt;
-	cursor: pointer;
-}
-input[type=submit] {
-	color: var(--warmblack);
-	background-color: goldenrod;
-	border-color: goldenrod;
-	font-size: var(--base-size);
-	padding-top: 5pt;
-	padding-bottom: 5pt;
-	padding-left: 20pt;
-	padding-right: 20pt;
-	cursor: pointer;
-}
-button:disabled {
-	cursor: default;
-}
-a {
-	color: gold;
-	text-decoration: underline;
-}
-::selection {
-	background: goldenrod;
-	color: var(--warmblack);
-}
-*:focus {
-	outline-color: goldenrod;
-	outline-style: double;
-	outline-width: 2pt;
-}
-h1 {
-	padding-bottom:30px;
-	font-size:40pt
-}
-hr {
-	border-color: goldenrod;
-}
-dialog {
-	background-color: var(--warmblack);
-	color: goldenrod;
-}
-select {
-	background-color: var(--warmblack);
-	color: goldenrod;
-	border-color: goldenrod;
-}
-option {
-	background-color: var(--warmblack);
-	color: goldenrod;
-	border-color: goldenrod;
-}
-option::selection {
-	background-color: goldenrod;
-	color: var(--warmblack);
-	border-color: var(--warmblack);
-}
-fieldset {
-	border-color: goldenrod;
+	--text-glow: inherit;
+	--heart: var(--text);
+	--leaves: var(--special);
+	--heart_bg: var(--bg);
 }
 
-.inverted {
-	background-color: goldenrod;
-	text-shadow: None;
-	color: var(--warmblack)
-}
-.inverted ::selection {
-	background: var(--warmblack);
-	color: goldenrod;
-}
-.inverted button {
-	color: goldenrod;
-	background-color: var(--warmblack);
-	border-color: goldenrod;
-	border-width: 6px;
-	font-size: var(--base-size);
-	padding-top: 5pt;
-	padding-bottom: 5pt;
-	padding-left: 20pt;
-	padding-right: 20pt;
-}
-.inverted hr {
-	border-color: var(--warmblack);
-}
-.inverted a {
-	background-color: var(--warmblack);
-}
-
-.initial-capital::first-letter{
+/* .initial-capital::first-letter{
 	font-family: KJV1611Regular;
-}
+} */
 @supports (initial-letter: 2){
 	.initial-capital::first-letter {
 		-webkit-initial-letter: 2;
@@ -144,65 +28,3 @@ fieldset {
 		float: left;
 	}
 }
-
-.phone-stack {
-	display:flex;
-	justify-content: center;
-}
-@media only screen and (max-width: 800px) {
-	.phone-stack {
-		flex-direction: column;
-		align-items: center;
-	}
-	.phone-stack>* {
-		width: 100% !important;
-	}
-}
-
-.center-in-page {
-	margin: 0;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	-ms-transform: translate(-50%, -50%);
-	transform: translate(-50%, -50%);
-}
-
-.center-at-bottom {
-	position: absolute;
-	left: 50%;
-	bottom: 0;
-	transform: translate(-50%, 0);
-	margin: 0 auto;
-}
-
-.center-col {
-	max-width: 960px;
-	width: 100%;
-	margin: auto;
-}
-
-.ellipsis-throbber {
-	width: 16px;
-	height: 16px;
-	border-radius: 50%;
-	background-color: #fff;
-	box-shadow: 32px 0 #fff, -32px 0 #fff;
-	position: relative;
-	animation: flash 0.75s ease-out infinite alternate;
-  }
-  
-  @keyframes flash {
-	0% {
-	  background-color: var(--warmblack);
-	  box-shadow: 32px 0 var(--warmblack), -32px 0 gold;
-	}
-	50% {
-	  background-color: gold;
-	  box-shadow: 32px 0 var(--warmblack), -32px 0 var(--warmblack);
-	}
-	100% {
-	  background-color: var(--warmblack);
-	  box-shadow: 32px 0 gold, -32px 0 var(--warmblack);
-	}
-  }

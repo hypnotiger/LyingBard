@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load heads %}
+
+{% block head %}
+{{ block.super }}
+{% simple_head "LyingBard Speakers" "Your LyingBard speakers." "lyingbard/style.css" %}
+<style>
+    table, th, td {
+        border-collapse: collapse;
+        border-style:solid
+    }
+    td {
+        padding:24px;
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+<table style="width:100%;box-sizing:border-box;table-layout:auto;">
+    <tr>
+        <th>Name</th>
+        <th>ID</th>
+        <th>Owner</th>
+        <th>Generations</th>
+    </tr>
+    {% for speaker in speakers %}
+    <tr>
+        <td>
+            <a href="{% url 'lyingbard:speaker_details' speaker.id %}">{{speaker.name}}</a>
+        </td>
+        <td>
+            {{ speaker.url_id }}
+        </td>
+        <td>
+            {{ speaker.owner }}
+        </td>
+        <td>
+            {{ speaker.generation_set.all|length }}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

@@ -4,21 +4,7 @@
 
 {% block head %}{% simple_head "LyingBard" "A TTS based off of LyreBird." "lyingbard/style.css" %}{% endblock %}
 
-{% block header %}
-    <p>
-        <a href="{% url 'lyingbard:index' %}">Back to LyingBard Home</a>
-    </p>
-{% endblock %}
-
 {% block content %}
-    <iframe style="width:800px;height:500px" src="{% url 'lyingbard:generate_widget' %}" frameBorder="0">
+    <iframe style="width:800px;height:500px;max-width:100%;max-height:100%" src="{% url 'lyingbard:generate_widget' %}" frameBorder="0">
     </iframe>
-{% endblock %}
-
-{% block footer %}
-<div style="text-align: center;">
-    <p>
-        <a href="{% url 'lyingbard:dashboard' %}"><button>{% if user.is_authenticated %}Dashboard{% else %}Log In{% endif %}</button></a>
-    </p>
-</div>
 {% endblock %}

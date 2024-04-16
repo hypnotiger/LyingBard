@@ -30,10 +30,13 @@ async function sendTTSRequest() {
         response.json()
     ).then(
         (data) => {
-            audioPlayer.src = data.audioURL
+            if (Object.hasOwn(data, "audioURL")) {
+                audioPlayer.src = data.audioURL;
+            }
+            else {
+                alert(data.message || "Server Error");
+            }
         }
-    ).catch(
-        console.error
     ).finally(
         _ => ttsForm.dispatchEvent(loadingFinished)
     );
