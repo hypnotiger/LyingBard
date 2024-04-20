@@ -3,8 +3,8 @@ from tkinter import filedialog
 from tkinter import ttk
 import shutil
 from pathlib import Path
-from wizard import Wizard
-from models import TTS
+from .wizard import Wizard
+from .models import TTS
 
 class TTSName(Frame):
     name: StringVar

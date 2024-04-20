@@ -1,11 +1,11 @@
-from lyingbard_tts.model import Talkotron
+from .lyingbard_tts.model import Talkotron
 import platformdirs
 import torch
 from torch import Tensor
 from pathlib import Path
 import json
-from lyingbard_tts.tts import text_to_speech
-from lyingbard_tts.finetuning import finetune
+from .lyingbard_tts.tts import text_to_speech
+from .lyingbard_tts.finetuning import finetune
 from pydub import AudioSegment
 import shutil
 from typing import Self
@@ -19,9 +19,8 @@ class TTS():
     model: Talkotron
     speaker: Tensor
 
-    def __init__(self, name: str) -> None:
+    def __init__(self, name: str = "") -> None:
         self.path = DATA_DIR/"TTS"/name
-        (self.path/"data").mkdir(parents=True, exist_ok=True)
         self.model = Talkotron()
         self.model.to(self.model.device)
         self.speaker = torch.zeros(256)
@@ -35,10 +34,20 @@ class TTS():
             self.speaker = torch.Tensor(
                 json.load(speaker)
             )
+    
+    def change(self, name: str):
+        if self.model == None and name == "":
+            return
+        if self.model == None or self.name != name and TTS.usable(name):
+            self.path = DATA_DIR/"TTS"/name
+            self.load()
 
     @property
     def name(self) -> str:
-        self.path.name
+        if self.path == DATA_DIR/"TTS":
+            return None
+        else:
+            return self.path.name
 
     def speak(self, text: str) -> AudioSegment:
         return text_to_speech(text, self.model, self.speaker)
@@ -53,6 +62,7 @@ class TTS():
 
     def new(name: str, audios: list[str], transcripts: list[str]) -> Self:
         self = TTS(name)
+        (self.path/"data").mkdir(parents=True, exist_ok=True)
 
         transcript_json = {}
         for audio, transcript in zip(audios, transcripts):
@@ -78,5 +88,11 @@ class TTS():
         self.model, self.speaker = finetune(audios, transcripts.values())
     
     def list_all() -> list[str]: return [tts.name for tts in (DATA_DIR/"TTS").glob("*")]
-    def list() -> list[str]:
+    def list_usable() -> list[str]:
         return [Path(*tts.parts[:-1]).name for tts in (DATA_DIR/"TTS").glob("*/*.pt")]
+    
+    def exists(name: str) -> bool:
+        return (DATA_DIR/"TTS"/name).exists()
+
+    def usable(name: str) -> bool:
+        return (DATA_DIR/"TTS"/name/"model.pt").exists()
