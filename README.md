@@ -16,7 +16,7 @@ GPU goes much faster. Only available for NVIDIA GPUs.
 
 ## Training
 <ol>
-  <li>Model > Train then follow the wizard.</li>
+  <li>Model > Train, then follow the wizard.</li>
   <li>When you select the audio the wizard is sent behind main window for some reason.</li>
   <li>Look at the console for training progress.</li>
   <li>Close and Reopen the program to refresh the list of TTS's.</li>
@@ -25,8 +25,8 @@ GPU goes much faster. Only available for NVIDIA GPUs.
 ## Use/Share Trained Models
 <ol>
   <li>Model > Open Folder</li>
-  <li>Open TTS folder</li>
-  <li>Share/paste the whole folder</li>
+  <li>Open the "TTS" folder</li>
+  <li>Share/paste the model folder</li>
 </ol>
 
 ## Discord Bot
@@ -36,7 +36,7 @@ GPU goes much faster. Only available for NVIDIA GPUs.
   <li>Change installation settings to give the "applications.commands" and "bot" scopes and the "Speak" permission.</li>
   <li>Install the bot to your Discord server.</li>
   <li>Go to the "Bot" tab and get your token.</li>
-  <li>In LyingBard, Bot > Discord > Setup copy in your token.</li>
+  <li>In LyingBard, Bot > Discord > Setup, copy in your token.</li>
   <li>Bot > Discord > Start</li>
 </ol>
 
