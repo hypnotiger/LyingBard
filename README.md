@@ -3,6 +3,12 @@
 
 If you're on Linux, I'm sure you can figure it out.
 
+## Pretrained Models
+<ul>
+  <li><a href="https://drive.google.com/file/d/1smJK-7fDIkMA10Pwgoj2KTE_ceKAHi2D/view?usp=sharing">Grove</a> (Me)</li>
+  <li><a href="https://drive.google.com/file/d/1U7xdZ0bqbeOfPkHn9ffsOaXsWZ0xaeUK/view?usp=sharing">CoolVids</a> (The Gnome, does not sound like him)</li>
+</ul>
+
 ## GPU
 [Install CUDA 11.8](https://developer.nvidia.com/cuda-11-8-0-download-archive)
 
