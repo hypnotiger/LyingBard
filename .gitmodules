@@ -1,0 +1,3 @@
+[submodule "lyingbard_tts/emojisound"]
+	path = lyingbard_tts/emojisound
+	url = https://github.com/GroveDG/emojisound
