@@ -33,3 +33,6 @@ GPU goes much faster. Only available for NVIDIA GPUs.
   <li>In LyingBard, Bot > Discord > Setup copy in your token.</li>
   <li>Bot > Discord > Start</li>
 </ol>
+
+## Help
+Send me an ask on [Tumblr](https://www.tumblr.com/lyingbard), send me an email at <grovedgdev@gmail.com> or submit a Github issue.
