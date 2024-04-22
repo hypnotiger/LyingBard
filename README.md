@@ -1,3 +1,5 @@
+![image](https://github.com/GroveDG/LyingBard/assets/87248833/250f3b66-3bdc-4c01-b575-fda0265b341e)
+
 ## Download (Windows)
 [Download](https://drive.google.com/file/d/16VTnAVjqCFLJ6_hMZsNr4BkAuhNvZnFP/view?usp=drive_link)
 
