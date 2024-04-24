@@ -5,6 +5,20 @@
 
 If you're on Linux, I'm sure you can figure it out.
 
+## Setup
+### Install ffmpeg
+<ol>
+  <li><a href=https://www.gyan.dev/ffmpeg/builds/ffmpeg-release-essentials.zip>Download</a></li>
+  <li>Extract this somewhere. Doesn't matter where, but ideally somewhere you're ok keeping it forever.</li>
+  <li>Open the Windows start menu.</li>
+  <li>Search for "Edit the system environment variables".</li>
+  <li>Click "Environment Variables..."</li>
+  <li>In the upper box, double click "Path".</li>
+  <li>Click "New".</li>
+  <li>Paste in the path to specifically the ffmpeg "bin" folder.</li>
+</ol>
+If you're on Linux this is actually easier for you. You can figure it out.
+
 ## Pretrained Models
 <ul>
   <li><a href="https://drive.google.com/file/d/1smJK-7fDIkMA10Pwgoj2KTE_ceKAHi2D/view?usp=sharing">Grove</a> (Me)</li>
