@@ -19,6 +19,19 @@ If you're on Linux, I'm sure you can figure it out.
 </ol>
 If you're on Linux this is actually easier for you. You can figure it out.
 
+### Start up
+This will take a while.
+
+If you see a command line pop up, it's loading. This command line will have info that the GUI doesn't have yet. Take a look here if something is wrong and send me what's in here if you need help.
+
+Here are things you might see in the command line:
+<ul>
+  <li>"cpu"/"cuda": This tells you what device LyingBard will be running on. CUDA is GPU and will run faster and CPU will run slower.</li>
+  <li>Warnings starting with "torch/": These are usually "UserWarning"s for deprecation. These are totally fine. Since LyreBird is old, a lot of the contemporary interfaces I'm using have since been deprecated. That's what it's "warning" you about.</li>
+  <li>"pydub\utils.py:170: RuntimeWarning: Couldn't find ffmpeg or avconv - defaulting to ffmpeg, but may not work": This means you need to install ffmpeg.</li>
+  <li>Any Error (not warning): This means something has gone wrong and you should probably report it to me. Send me the full error message.</li>
+</ul>
+
 ## Pretrained Models
 <ul>
   <li><a href="https://drive.google.com/file/d/1smJK-7fDIkMA10Pwgoj2KTE_ceKAHi2D/view?usp=sharing">Grove</a> (Me)</li>
