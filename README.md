@@ -59,4 +59,4 @@ GPU goes much faster. Only available for NVIDIA GPUs.
 7. Bot > Discord > Start
 
 ## Help
-Send me an ask on [Tumblr](https://www.tumblr.com/lyingbard), send me an email at <grovedgdev@gmail.com> or submit a Github issue.
+Send me an ask on [Tumblr](https://www.tumblr.com/lyingbard), send me an email at <grovedgdev@gmail.com>, or submit a Github issue.
