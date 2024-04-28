@@ -42,8 +42,8 @@ If it's installed correctly, you should see `cuda` instead of `cpu` on startup.
 
 ## Use/Share Trained Models
 1. Model > Open Folder
-2. Open/Create the "TTS" folder
-3. Share/Paste the model folder
+2. Create/Open the "TTS" folder
+3. Paste/Share the model folder
 
 ## Training
 1. Model > Train, then follow the wizard.
