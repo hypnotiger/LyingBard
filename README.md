@@ -34,6 +34,8 @@ Here are things you might see in the command line:
 
 GPU goes much faster. Only available for NVIDIA GPUs.
 
+If it's installed correctly, you should see `cuda` instead of `cpu` on startup.
+
 ## Pretrained Models
 - [Grove](https://drive.google.com/file/d/1smJK-7fDIkMA10Pwgoj2KTE_ceKAHi2D/view?usp=sharing) (Me)
 - [CoolVids](https://drive.google.com/file/d/1U7xdZ0bqbeOfPkHn9ffsOaXsWZ0xaeUK/view?usp=sharing) (The Gnome, does not sound like him)
