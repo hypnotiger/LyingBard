@@ -29,25 +29,25 @@ Here are things you might see in the command line:
 - `pydub\utils.py:170: RuntimeWarning: Couldn't find ffmpeg or avconv - defaulting to ffmpeg, but may not work`: This means you need to install ffmpeg.</li>
 - Any Error (not warning): This means something has gone wrong and you should probably report it to me. Send me the full error message.</li>
 
+## GPU (Optional, Recommended)
+[Install CUDA 11.8](https://developer.nvidia.com/cuda-11-8-0-download-archive)
+
+GPU goes much faster. Only available for NVIDIA GPUs.
+
 ## Pretrained Models
 - [Grove](https://drive.google.com/file/d/1smJK-7fDIkMA10Pwgoj2KTE_ceKAHi2D/view?usp=sharing) (Me)
 - [CoolVids](https://drive.google.com/file/d/1U7xdZ0bqbeOfPkHn9ffsOaXsWZ0xaeUK/view?usp=sharing) (The Gnome, does not sound like him)
 
-## GPU
-[Install CUDA 11.8](https://developer.nvidia.com/cuda-11-8-0-download-archive)
-
-GPU goes much faster. Only available for NVIDIA GPUs.
+## Use/Share Trained Models
+1. Model > Open Folder
+2. Open/Create the "TTS" folder
+3. Share/Paste the model folder
 
 ## Training
 1. Model > Train, then follow the wizard.
 2. When you select the audio the wizard is sent behind main window for some reason.
 3. Look at the console for training progress.
 4. Close and Reopen the program to refresh the list of TTS's.
-
-## Use/Share Trained Models
-1. Model > Open Folder
-2. Open/Create the "TTS" folder
-3. Share/Paste the model folder
 
 ## Discord Bot
 1. Go to https://discord.com/developers/applications
