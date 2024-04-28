@@ -46,8 +46,8 @@ GPU goes much faster. Only available for NVIDIA GPUs.
 
 ## Use/Share Trained Models
 1. Model > Open Folder
-2. Open the "TTS" folder
-3. Share/paste the model folder
+2. Open/Create the "TTS" folder
+3. Share/Paste the model folder
 
 ## Discord Bot
 1. Go to https://discord.com/developers/applications
