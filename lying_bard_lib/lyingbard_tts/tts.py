@@ -10,8 +10,8 @@ from scipy import ndimage
 from .model import Talkotron
 from matplotlib import pyplot as plt
 
-from .emojisound import emoji_sounds
-import emoji
+#from .emojisound import emoji_sounds
+#import emoji
 
 # From itertools recipes
 # Generalized pairwise
@@ -43,7 +43,7 @@ DEFAULT_MODEL_PATH = Path(__file__).parent / "talkotron_model.pt"
 
 import g2p_en
 phonemizer = g2p_en.G2p()
-
+'''
 EMOJI_PLACEHOLDER = " E. .E "
 EMOJI_PHONEHOLDER = ("IY1", " ", ". .", " ", "IY1")
 def prep_emoji(text: str):
@@ -109,5 +109,6 @@ def text_to_speech(text: str, model: Talkotron, speaker: torch.Tensor) -> AudioS
         sample_width=audio.dtype.itemsize,
         channels=1
     )
-    audio = insert_emoji_sounds(text, matches, attention, audio)
+    # audio = insert_emoji_sounds(text, matches, attention, audio)
     return audio
+'''
