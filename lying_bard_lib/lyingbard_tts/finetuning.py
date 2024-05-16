@@ -3,7 +3,7 @@ from pydub import AudioSegment
 import torch
 from . import fromtorchaudio
 import numpy as np
-from .tts import grapheme_to_phoneme
+#from .tts import grapheme_to_phoneme
 from .model import train_model, TrainStruct, Talkotron, collate_fn, DEVICE
 from pathlib import Path
 from .speaker import embed
@@ -70,7 +70,9 @@ class FineTuningDataset():
 	@staticmethod
 	def new(audios: list[AudioSegment], transcripts: list[str]):
 		spectrograms = [audio_to_mel(audio) for audio in audios]
-		transcripts = [Talkotron.phone_to_tensor(grapheme_to_phoneme(transcript)[0]) for transcript in transcripts]
+		# transcripts = [Talkotron.phone_to_tensor(grapheme_to_phoneme(transcript)[0]) for transcript in transcripts]
+		# FIXME: We are missing everything related to emojisound, and thus, grapheme_to_phoneme is not available!
+		transcripts = [Talkotron.phone_to_tensor(transcript) for transcript in transcripts]
 		speaker_embedding = torch.from_numpy(np.mean(np.concatenate([
 			embed(audio)[None]
 			for audio in audios]), axis=0))
