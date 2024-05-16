@@ -4,7 +4,7 @@ import torch
 from torch import Tensor
 from pathlib import Path
 import json
-from .lyingbard_tts.tts import text_to_speech
+from .lyingbard_tts import tts
 from .lyingbard_tts.finetuning import finetune
 from pydub import AudioSegment
 import shutil
@@ -50,7 +50,7 @@ class TTS():
             return self.path.name
 
     def speak(self, text: str) -> AudioSegment:
-        return text_to_speech(text, self.model, self.speaker)
+        return tts.text_to_speech(text, self.model, self.speaker)
     
     def save(self):
         torch.save(
